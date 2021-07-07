@@ -4,12 +4,16 @@
 
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+part 'VideoModel.g.dart';
+
 List<Video> videoFromJson(String str) =>
     List<Video>.from(json.decode(str)['videos'].map((x) => Video.fromJson(x)));
 
 String videoToJson(List<Video> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+@HiveType(typeId: 1)
 class Video {
   Video({
     this.id,
@@ -22,15 +26,23 @@ class Video {
     this.videoFiles,
     this.videoPictures,
   });
-
+  @HiveField(1)
   int? id;
+  @HiveField(2)
   int? width;
+  @HiveField(3)
   int? height;
+  @HiveField(4)
   String? url;
+  @HiveField(5)
   String? image;
+  @HiveField(6)
   int? duration;
+  @HiveField(7)
   User? user;
+  @HiveField(8)
   List<VideoFile>? videoFiles;
+  @HiveField(9)
   List<VideoPicture>? videoPictures;
 
   factory Video.fromJson(Map<String, dynamic> json) => Video(
@@ -61,6 +73,7 @@ class Video {
       };
 }
 
+@HiveType(typeId: 3)
 class User {
   User({
     this.id,
@@ -68,8 +81,11 @@ class User {
     this.url,
   });
 
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   String? name;
+  @HiveField(2)
   String? url;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -85,6 +101,7 @@ class User {
       };
 }
 
+@HiveType(typeId: 4)
 class VideoFile {
   VideoFile({
     this.id,
@@ -95,11 +112,17 @@ class VideoFile {
     this.link,
   });
 
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   String? quality;
+  @HiveField(2)
   String? fileType;
+  @HiveField(3)
   int? width;
+  @HiveField(4)
   int? height;
+  @HiveField(5)
   String? link;
 
   factory VideoFile.fromJson(Map<String, dynamic> json) => VideoFile(
@@ -121,6 +144,7 @@ class VideoFile {
       };
 }
 
+@HiveType(typeId: 5)
 class VideoPicture {
   VideoPicture({
     this.id,
@@ -128,8 +152,11 @@ class VideoPicture {
     this.nr,
   });
 
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   String? picture;
+  @HiveField(2)
   int? nr;
 
   factory VideoPicture.fromJson(Map<String, dynamic> json) => VideoPicture(

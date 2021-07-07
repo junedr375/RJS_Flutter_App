@@ -1,7 +1,10 @@
+import 'package:artapp/Providers/PhotoFavouriteProvider.dart';
 import 'package:artapp/models/PhotoModel.dart';
+import 'package:artapp/utils/laucnThisUrl.dart';
 import 'package:artapp/widgets/Loaders.dart';
 import 'package:artapp/widgets/getOfContextDatas.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PhotoDetailsPage extends StatefulWidget {
@@ -37,31 +40,53 @@ class _PhotoDetailsPageState extends State<PhotoDetailsPage>
         children: [
           imageSection(),
           SizedBox(height: 10),
-          InkWell(
-              onTap: () async {
-                String _url = widget.photo?.photographerUrl ?? '';
-                await canLaunch(_url)
-                    ? await launch(_url)
-                    : throw 'Could not launch $_url';
-              },
-              child: Container(
-                width: screenSize.width,
-                alignment: Alignment.center,
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 50,
-                  width: screenSize.width * 0.5,
-                  decoration: BoxDecoration(
-                      color: theme.highlightColor,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Text(
-                    'View Profile',
-                    style: theme.textTheme.headline4,
-                  ),
-                ),
-              )),
+          Expanded(
+            child: imageDetailSectionWidget(),
+          ),
+          SizedBox(height: 5)
         ],
       ),
+    );
+  }
+
+  Widget imageDetailSectionWidget() {
+    Size screenSize = getMediaQuerySize(context);
+    final theme = getThemeDataOfContext(context);
+    return Column(
+      children: [
+        InkWell(
+            onTap: () async {
+              String _url = widget.photo?.photographerUrl ?? '';
+              launchThisUrl(_url);
+            },
+            child: Container(
+              width: screenSize.width,
+              alignment: Alignment.center,
+              child: Container(
+                alignment: Alignment.center,
+                height: 50,
+                width: screenSize.width * 0.5,
+                decoration: BoxDecoration(
+                    color: theme.highlightColor,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  'View Profile',
+                  style: theme.textTheme.headline4,
+                ),
+              ),
+            )),
+        SizedBox(
+          height: 10,
+        ),
+        Expanded(
+            child: SingleChildScrollView(
+                child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    child: Text(
+                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.ypesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                      style: theme.textTheme.bodyText1,
+                    )))),
+      ],
     );
   }
 
@@ -95,8 +120,6 @@ class _PhotoDetailsPageState extends State<PhotoDetailsPage>
                     onPressed: () {
                       Navigator.pop(context);
                     }),
-                // AnimatedIcon(
-                //     icon: AnimatedIcons.arrow_menu, progress: )
               ],
             )),
         Positioned(
@@ -120,27 +143,36 @@ class _PhotoDetailsPageState extends State<PhotoDetailsPage>
         Positioned(
             right: 20,
             top: 30,
-            child: Container(
-                height: 80,
-                width: 80,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: theme.highlightColor),
-                child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isFavourite = !isFavourite;
-                      });
-                    },
-                    child: isFavourite
-                        ? Icon(
-                            Icons.favorite,
-                            size: 40,
-                            color: Colors.red,
-                          )
-                        : Icon(
-                            Icons.favorite_border,
-                            size: 40,
-                          )))),
+            child: Consumer<PhotoFavouriteNotifier>(
+              builder: (ctx, provider, child) {
+                return Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: theme.highlightColor),
+                    child: GestureDetector(
+                        onTap: () {
+                          if (provider.photoBox!
+                              .containsKey(widget.photo?.id)) {
+                            provider.removePhotoToFavourite(
+                                widget.photo ?? Photo());
+                          } else {
+                            provider
+                                .addPhotoToFavourite(widget.photo ?? Photo());
+                          }
+                        },
+                        child: provider.photoBox!.containsKey(widget.photo?.id)
+                            ? Icon(
+                                Icons.favorite,
+                                size: 40,
+                                color: Colors.red,
+                              )
+                            : Icon(
+                                Icons.favorite_border,
+                                size: 40,
+                              )));
+              },
+            )),
       ],
     );
   }

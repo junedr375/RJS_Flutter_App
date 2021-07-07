@@ -1,9 +1,9 @@
-import 'package:artapp/APIs/APIConnection.dart';
-import 'package:artapp/models/PhotoModel.dart';
+import 'package:artapp/Providers/DrawerProvider.dart';
 import 'package:artapp/pages/home/PhotoTile.dart';
 import 'package:artapp/pages/home/VideoTile.dart';
 import 'package:artapp/widgets/getOfContextDatas.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,18 +13,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late TabController tabController;
 
-  List<Photo> photosList = [];
+  //List<Photo> photosList = [];
   @override
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
-
-    fetchDataHere();
-  }
-
-  fetchDataHere() async {
-    photosList = await APIConnection.getPhotosFromAPI(1);
-    setState(() {});
   }
 
   @override
@@ -34,46 +27,81 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  double xOffset = 0.0;
-  double yOffset = 0.0;
-  double scale = 1.0;
-
-  bool isDrawerVisible = false;
-
   @override
   Widget build(BuildContext context) {
     Size screenSize = getMediaQuerySize(context);
     double mainAxisHeight = getMainAxisHeight(context);
     final theme = getThemeDataOfContext(context);
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      curve: Curves.linear,
-      transform: Matrix4.translationValues(xOffset, yOffset, 0.0)..scale(scale),
-      height: mainAxisHeight,
-      width: screenSize.width,
-      decoration: isDrawerVisible
-          ? BoxDecoration(
-              color: theme.backgroundColor,
-              borderRadius: BorderRadius.circular(20))
-          : BoxDecoration(color: theme.backgroundColor),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          appBarWidget(),
-          SizedBox(height: 20),
-          searchSection(),
-          SizedBox(height: 10),
+    return Consumer<DrawerNotifier>(builder: (ctx, drawerProvider, child) {
+      return AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.linear,
+        transform: Matrix4.translationValues(
+            drawerProvider.xOffset, drawerProvider.yOffset, 0.0)
+          ..scale(drawerProvider.scale),
+        height: mainAxisHeight,
+        width: screenSize.width,
+        decoration: drawerProvider.isDrawerVisible
+            ? BoxDecoration(
+                color: theme.backgroundColor,
+                borderRadius: BorderRadius.circular(20))
+            : BoxDecoration(color: theme.backgroundColor),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              decoration: drawerProvider.isDrawerVisible
+                  ? BoxDecoration(
+                      color: theme.backgroundColor,
+                      borderRadius:
+                          BorderRadius.only(topLeft: Radius.circular(20)))
+                  : BoxDecoration(color: theme.backgroundColor),
+              height: 50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                      icon: drawerProvider.isDrawerVisible
+                          ? Icon(
+                              Icons.close,
+                              size: 40,
+                            )
+                          : Icon(
+                              Icons.menu,
+                              size: 35,
+                            ),
+                      onPressed: () {
+                        drawerProvider.toggleDrawerScreen(context);
+                      }),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Hello, Welcome Juned',
+                        style: theme.textTheme.headline1,
+                      )),
+                  Spacer(),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            searchSection(),
+            SizedBox(height: 10),
 
-          Expanded(child: tabSection()),
+            Expanded(child: tabSection()),
 
-          //  tabSection()
-          // Expanded(
-          //   flex: ,
-          //   child: tabSection(),
-          // ),
-        ],
-      ),
-    );
+            //  tabSection()
+            // Expanded(
+            //   flex: ,
+            //   child: tabSection(),
+            // ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget searchSection() {
@@ -144,61 +172,58 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
-  Widget appBarWidget() {
-    final theme = getThemeDataOfContext(context);
-    return Container(
-      decoration: isDrawerVisible
-          ? BoxDecoration(
-              color: theme.backgroundColor,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(20)))
-          : BoxDecoration(color: theme.backgroundColor),
-      height: 50,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          IconButton(
-              icon: isDrawerVisible
-                  ? Icon(
-                      Icons.close,
-                      size: 40,
-                    )
-                  : Icon(
-                      Icons.menu,
-                      size: 35,
-                    ),
-              onPressed: () {
-                if (isDrawerVisible) {
-                  setState(() {
-                    xOffset = 0.0;
-                    yOffset = 0.0;
-                    scale = 1.0;
-                    isDrawerVisible = false;
-                  });
-                } else {
-                  setState(() {
-                    xOffset = MediaQuery.of(context).size.width * 0.70;
-                    yOffset = 80.0;
-                    scale = .8;
-                    isDrawerVisible = true;
-                  });
-                }
-              }),
-          SizedBox(
-            width: 20,
-          ),
-          Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Hello, Welcome Juned',
-                style: theme.textTheme.headline1,
-              )),
-          Spacer(),
-        ],
-      ),
-    );
-  }
-
-  //Widget photosSectionForTabBar() {
-
+  // Widget appBarWidget() {
+  //   final theme = getThemeDataOfContext(context);
+  //   return Container(
+  //     decoration: drawerProvider.isDrawerVisible
+  //         ? BoxDecoration(
+  //             color: theme.backgroundColor,
+  //             borderRadius: BorderRadius.only(topLeft: Radius.circular(20)))
+  //         : BoxDecoration(color: theme.backgroundColor),
+  //     height: 50,
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //       crossAxisAlignment: CrossAxisAlignment.center,
+  //       children: [
+  //         IconButton(
+  //             icon: isDrawerVisible
+  //                 ? Icon(
+  //                     Icons.close,
+  //                     size: 40,
+  //                   )
+  //                 : Icon(
+  //                     Icons.menu,
+  //                     size: 35,
+  //                   ),
+  //             onPressed: () {
+  //               if (isDrawerVisible) {
+  //                 setState(() {
+  //                   xOffset = 0.0;
+  //                   yOffset = 0.0;
+  //                   scale = 1.0;
+  //                   isDrawerVisible = false;
+  //                 });
+  //               } else {
+  //                 setState(() {
+  //                   xOffset = MediaQuery.of(context).size.width * 0.70;
+  //                   yOffset = 80.0;
+  //                   scale = .8;
+  //                   isDrawerVisible = true;
+  //                 });
+  //               }
+  //             }),
+  //         SizedBox(
+  //           width: 20,
+  //         ),
+  //         Container(
+  //             alignment: Alignment.centerLeft,
+  //             child: Text(
+  //               'Hello, Welcome Juned',
+  //               style: theme.textTheme.headline1,
+  //             )),
+  //         Spacer(),
+  //       ],
+  //     ),
+  //   );
+  // /}
 }

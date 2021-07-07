@@ -4,12 +4,17 @@
 
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'PhotoModel.g.dart';
+
 List<Photo> photoFromJson(String str) =>
     List<Photo>.from(json.decode(str)['photos'].map((x) => Photo.fromJson(x)));
 
 String photoToJson(List<Photo> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+@HiveType(typeId: 0)
 class Photo {
   Photo({
     this.id,
@@ -23,16 +28,25 @@ class Photo {
     this.src,
     this.liked,
   });
-
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   int? width;
+  @HiveField(2)
   int? height;
+  @HiveField(3)
   String? url;
+  @HiveField(4)
   String? photographer;
+  @HiveField(5)
   String? photographerUrl;
+  @HiveField(6)
   int? photographerId;
+  @HiveField(7)
   String? avgColor;
+  @HiveField(8)
   Src? src;
+  @HiveField(9)
   bool? liked;
 
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
@@ -62,6 +76,7 @@ class Photo {
       };
 }
 
+@HiveType(typeId: 2)
 class Src {
   Src({
     this.original,
@@ -74,13 +89,21 @@ class Src {
     this.tiny,
   });
 
+  @HiveField(0)
   String? original;
+  @HiveField(1)
   String? large2X;
+  @HiveField(2)
   String? large;
+  @HiveField(3)
   String? medium;
+  @HiveField(4)
   String? small;
+  @HiveField(5)
   String? portrait;
+  @HiveField(6)
   String? landscape;
+  @HiveField(7)
   String? tiny;
 
   factory Src.fromJson(Map<String, dynamic> json) => Src(

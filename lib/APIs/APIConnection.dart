@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:artapp/models/PhotoModel.dart';
 import 'package:artapp/models/VideoModel.dart';
-import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 
