@@ -46,14 +46,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late ConnectivityResult connectivityResult;
   @override
   void initState() {
     super.initState();
+    getConnectivityResult();
   }
 
   @override
   void dispose() {
     super.dispose();
+  }
+
+  getConnectivityResult() async {
+    connectivityResult = await Connectivity().checkConnectivity();
   }
 
   @override
@@ -63,7 +69,7 @@ class _MyAppState extends State<MyApp> {
         providers: [
           StreamProvider(
             create: (context) => Connectivity().onConnectivityChanged,
-            initialData: ConnectivityResult.mobile,
+            initialData: connectivityResult,
           ),
           ChangeNotifierProvider(create: (context) => DrawerNotifier()),
           ChangeNotifierProvider(create: (context) => PhotoNotifier()),
