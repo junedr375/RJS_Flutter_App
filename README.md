@@ -42,6 +42,19 @@ https://user-images.githubusercontent.com/49837673/124860757-e51c6600-dfcf-11eb-
 
 
 Some of the ScreenShot
+
+<table>
+  <tr>
+    <td>Splash Screen</td>
+     <td>Home Page</td>
+     <td>Present day in purple and selected day in pink</td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861353-0af63a80-dfd1-11eb-9b4c-b06b89c7b643.png" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861365-10538500-dfd1-11eb-8120-aaf29fdd00bb" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861394-1ea1a100-dfd1-11eb-905e-120616f76744.png" width=270 height=480></td>
+  </tr>
+ </table>
 ![image](https://user-images.githubusercontent.com/49837673/124861353-0af63a80-dfd1-11eb-9b4c-b06b89c7b643.png)
 ![image](https://user-images.githubusercontent.com/49837673/124861365-10538500-dfd1-11eb-8120-aaf29fdd00bb.png)
 ![image](https://user-images.githubusercontent.com/49837673/124861394-1ea1a100-dfd1-11eb-905e-120616f76744.png)
