@@ -4,11 +4,11 @@
 
 App Details And Tool & Packages:
  
-⭐ Flutter 
-⭐ Http package for Fetching Data
-⭐ Hive for saving Data locally
-⭐ Provider for State Management
-⭐ For UI I have used Google Fonts, Stack, Hero Widget, Custom Clipper for modern look.
+⭐ Flutter <br>
+⭐ Http package for Fetching Data <br>
+⭐ Hive for saving Data locally <br>
+⭐ Provider for State Management <br>
+⭐ For UI I have used Google Fonts, Stack, Hero Widget, Custom Clipper for modern look. <br>
 
 
 Here are some short-Clips of the app
