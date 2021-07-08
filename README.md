@@ -47,17 +47,28 @@ Some of the ScreenShot
   <tr>
     <td>Splash Screen</td>
      <td>Home Page</td>
-     <td>Present day in purple and selected day in pink</td>
+     <td>Transition Drawer</td>
   </tr>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/49837673/124861353-0af63a80-dfd1-11eb-9b4c-b06b89c7b643.png" width=270 height=480></td>
-    <td><img src="https://user-images.githubusercontent.com/49837673/124861365-10538500-dfd1-11eb-8120-aaf29fdd00bb" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861365-10538500-dfd1-11eb-8120-aaf29fdd00bb.png" width=270 height=480></td>
     <td><img src="https://user-images.githubusercontent.com/49837673/124861394-1ea1a100-dfd1-11eb-905e-120616f76744.png" width=270 height=480></td>
   </tr>
  </table>
-![image](https://user-images.githubusercontent.com/49837673/124861353-0af63a80-dfd1-11eb-9b4c-b06b89c7b643.png)
-![image](https://user-images.githubusercontent.com/49837673/124861365-10538500-dfd1-11eb-8120-aaf29fdd00bb.png)
-![image](https://user-images.githubusercontent.com/49837673/124861394-1ea1a100-dfd1-11eb-905e-120616f76744.png)
+ 
+ <table>
+  <tr>
+    <td>Splash Screen</td>
+     <td>Home Page</td>
+     <td>Transition Drawer</td>
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861401-23feeb80-dfd1-11eb-8cf0-b0f073f906b4.png" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861409-282b0900-dfd1-11eb-82d8-630d34dacc1c.png" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861414-2bbe9000-dfd1-11eb-891c-c2e3240eec2b.png" width=270 height=480></td>
+  </tr>
+ </table>
+
 ![image](https://user-images.githubusercontent.com/49837673/124861401-23feeb80-dfd1-11eb-8cf0-b0f073f906b4.png)
 ![image](https://user-images.githubusercontent.com/49837673/124861409-282b0900-dfd1-11eb-82d8-630d34dacc1c.png)
 ![image](https://user-images.githubusercontent.com/49837673/124861414-2bbe9000-dfd1-11eb-891c-c2e3240eec2b.png)
