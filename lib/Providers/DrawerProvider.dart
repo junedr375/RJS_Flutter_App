@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+//Provider for Drawer Showing with transition
 class DrawerNotifier extends ChangeNotifier {
   double _xOffset = 0.0;
   double _yOffset = 0.0;

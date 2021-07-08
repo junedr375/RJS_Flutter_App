@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+//Video Detail Screen
 class VideoDetailsPage extends StatefulWidget {
   final Video? video;
   const VideoDetailsPage({Key? key, @required this.video}) : super(key: key);

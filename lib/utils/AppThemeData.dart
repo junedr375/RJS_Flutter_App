@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//Theme Data for the Application
+
 ThemeData appLightTheme() {
   return ThemeData(
       primarySwatch: Colors.teal,

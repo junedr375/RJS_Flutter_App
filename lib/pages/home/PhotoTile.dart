@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
+//TO show list of Photos
 class PhotoListTile extends StatefulWidget {
   final bool isFromLocal;
   const PhotoListTile({Key? key, this.isFromLocal = false}) : super(key: key);
@@ -26,7 +27,8 @@ class _PhotoListTileState extends State<PhotoListTile> {
       if (scrollController.position.pixels ==
           scrollController.position.maxScrollExtent) {
         if (!widget.isFromLocal)
-          Provider.of<PhotoNotifier>(context, listen: false).fetchMoreData();
+          Provider.of<PhotoNotifier>(context, listen: false)
+              .fetchMoreData(); // When scrolling to end it will fetch more Photos
       }
     });
     if (widget.isFromLocal)

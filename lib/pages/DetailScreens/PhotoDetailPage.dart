@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// Photo Detail Screen
 class PhotoDetailsPage extends StatefulWidget {
   final Photo? photo;
   const PhotoDetailsPage({Key? key, @required this.photo}) : super(key: key);
@@ -18,16 +19,8 @@ class PhotoDetailsPage extends StatefulWidget {
 class _PhotoDetailsPageState extends State<PhotoDetailsPage>
     with TickerProviderStateMixin {
   bool isFavourite = false;
-  // late Animation favouriteAnimation;
-  // late AnimationController animationController;
   @override
   void initState() {
-    // animationController =
-    //     AnimationController(duration: Duration(milliseconds: 700), vsync: this);
-
-    // favouriteAnimation = Tween(begin: 0.0, end: -0.15).animate(
-    //   CurvedAnimation(parent: animationController, curve: Curves.ease),
-    // );
     super.initState();
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// To Show Loaders
 Widget imageLoader(context, child, loadingProgress) {
   if (loadingProgress == null) return child;
   return Center(

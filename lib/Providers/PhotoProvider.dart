@@ -3,6 +3,7 @@ import 'package:artapp/models/PhotoModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
+//Provider for fetching Data for List of Photos
 class PhotoNotifier extends ChangeNotifier {
   static Box<Photo>? _photoBox;
 

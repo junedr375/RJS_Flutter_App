@@ -23,9 +23,11 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent)); // For Transparent Notification Bar
   Directory directory = await getApplicationDocumentsDirectory();
+
+  // Initializing Hive for local Database and Adding adapters
   Hive.init(directory.path);
   Hive.registerAdapter(PhotoAdapter());
   Hive.registerAdapter(VideoAdapter());
@@ -56,6 +58,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // Setting app with Multi Provider with using Provider Package
     return MultiProvider(
         providers: [
           StreamProvider(

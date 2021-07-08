@@ -17,7 +17,6 @@ class _MyFavouriteScreenState extends State<MyFavouriteScreen>
     with TickerProviderStateMixin {
   late TabController tabController;
 
-  //List<Photo> photosList = [];
   @override
   void initState() {
     super.initState();

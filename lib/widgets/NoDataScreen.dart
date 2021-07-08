@@ -1,6 +1,7 @@
 import 'package:artapp/widgets/getOfContextDatas.dart';
 import 'package:flutter/material.dart';
 
+//No Data or Error Showing Screen
 class NoContentScreen extends StatefulWidget {
   final String message;
   const NoContentScreen({Key? key, this.message = ''}) : super(key: key);

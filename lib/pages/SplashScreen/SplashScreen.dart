@@ -11,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
+  late AnimationController animationController; // For Implementing Animation
   late Animation position_up_anim, position_down_anim;
   double postionVal = 1.0;
 
@@ -43,7 +43,10 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(Duration(milliseconds: 3000), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  HomePage())); // Will Send to the Home Screen after 3 seconds
     });
   }
 

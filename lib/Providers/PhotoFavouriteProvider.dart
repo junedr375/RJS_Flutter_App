@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+//Provider for Saving Photo to Local Database
 class PhotoFavouriteNotifier extends ChangeNotifier {
   static Box<Photo>? _photoBox;
 

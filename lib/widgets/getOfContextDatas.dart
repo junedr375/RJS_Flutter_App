@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// To get MediaQuery and ThemeData Easily
+
 Size getMediaQuerySize(BuildContext context) {
   return MediaQuery.of(context).size;
 }

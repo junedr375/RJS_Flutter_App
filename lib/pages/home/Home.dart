@@ -6,6 +6,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//Main Home Screen Here Drawer is implemented with Stack
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -13,25 +14,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isInternet = false;
+
+  //For setting Up Connection
   void _getConnectionStatus(ConnectivityResult con) {
     print(con);
     setState(() {
       switch (con) {
         case ConnectivityResult.mobile:
           isInternet = true;
-          // _connectivityType = 'Mobile';
+
           break;
         case ConnectivityResult.wifi:
           isInternet = true;
-          //_connectivityType = 'Wifi';
           break;
         case ConnectivityResult.none:
           isInternet = false;
-          //_connectivityType = 'None';
           break;
         default:
           isInternet = false;
-        //_connectivityType = 'Unknown';
       }
     });
   }
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     double mainAxisHeight = getMainAxisHeight(context);
     final theme = getThemeDataOfContext(context);
 
-    _getConnectionStatus(con);
+    _getConnectionStatus(con); // To get Connection Status and updating the UI
 
     return !isInternet
         ? NoInternetConnection()

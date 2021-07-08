@@ -3,6 +3,8 @@ import 'package:artapp/models/VideoModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
+//Provider for Fething Data for Video List
+
 class VideoNotifier extends ChangeNotifier {
   static Box<Video>? _videoBox;
   VideoNotifier() {

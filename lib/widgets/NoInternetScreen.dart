@@ -1,6 +1,7 @@
 import 'package:artapp/widgets/getOfContextDatas.dart';
 import 'package:flutter/material.dart';
 
+// To Show No Internet Connection
 class NoInternetConnection extends StatefulWidget {
   const NoInternetConnection({Key? key}) : super(key: key);
 

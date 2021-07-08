@@ -2,6 +2,7 @@ import 'package:artapp/models/VideoModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
+//Provider for Saving Videos to Local Database
 class VideoFavouriteNotifier extends ChangeNotifier {
   static Box<Video>? _videoBox;
 
