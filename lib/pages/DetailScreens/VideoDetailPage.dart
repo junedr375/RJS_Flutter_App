@@ -125,8 +125,9 @@ class _VideoDetailsPageState extends State<VideoDetailsPage>
                             autoPlay: true,
                             height: screenSize.height * 0.65,
                             viewportFraction: 1,
-                            autoPlayInterval: Duration(seconds: 3),
-                            autoPlayAnimationDuration: Duration(seconds: 1)),
+                            autoPlayInterval: Duration(seconds: 1),
+                            autoPlayAnimationDuration:
+                                Duration(milliseconds: 800)),
                         items: widget.video?.videoPictures?.map((videoImage) {
                           return Builder(builder: (BuildContext context) {
                             return Container(
@@ -191,9 +192,14 @@ class _VideoDetailsPageState extends State<VideoDetailsPage>
                         if (!provider.videoBox!
                             .containsKey(widget.video?.id ?? '')) {
                           provider.addVideoToFavourite(widget.video ?? Video());
+                          showSnackBar(
+                              'Video by ${widget.video?.user?.name} Added to Favourite Succesffully');
                         } else {
                           provider.removeVideoFromFavourite(
                               widget.video ?? Video());
+
+                          showSnackBar(
+                              'Video by ${widget.video?.user?.name} Removed from Favourite Succesffully');
                         }
                       },
                       child:
@@ -263,6 +269,12 @@ class _VideoDetailsPageState extends State<VideoDetailsPage>
                     )))),
       ],
     );
+  }
+
+  void showSnackBar(String message) {
+    final snackBar =
+        SnackBar(duration: Duration(seconds: 1), content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
 

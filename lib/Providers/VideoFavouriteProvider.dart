@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
 class VideoFavouriteNotifier extends ChangeNotifier {
-  Box<Video>? _videoBox;
+  static Box<Video>? _videoBox;
 
   Box<Video>? get videoBox => _videoBox;
 

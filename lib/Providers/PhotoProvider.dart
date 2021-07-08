@@ -4,13 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
 class PhotoNotifier extends ChangeNotifier {
-  Box<Photo>? _photoBox;
+  static Box<Photo>? _photoBox;
 
   PhotoNotifier() {
     _photoBox = Hive.box<Photo>('photoBox');
   }
 
-  List<Photo> _photosList = [];
+  static List<Photo> _photosList = [];
   bool _isLoaded = false;
   bool _isMoreLoading = false;
   int _pagedIndex = 1;
@@ -37,7 +37,9 @@ class PhotoNotifier extends ChangeNotifier {
     _photosList = await APIConnection.getPhotosFromAPI(_pagedIndex);
     _isLoaded = true;
 
-    notifyListeners();
+    Future.delayed(Duration.zero, () async {
+      notifyListeners();
+    });
   }
 
   fetchMoreData() async {

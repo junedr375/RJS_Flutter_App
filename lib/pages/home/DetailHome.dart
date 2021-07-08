@@ -1,6 +1,9 @@
 import 'package:artapp/Providers/DrawerProvider.dart';
+import 'package:artapp/Providers/PhotoProvider.dart';
+import 'package:artapp/Providers/VideoProvider.dart';
 import 'package:artapp/pages/home/PhotoTile.dart';
 import 'package:artapp/pages/home/VideoTile.dart';
+import 'package:artapp/widgets/NoDataScreen.dart';
 import 'package:artapp/widgets/getOfContextDatas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -90,14 +93,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             SizedBox(height: 20),
             searchSection(),
             SizedBox(height: 10),
-
             Expanded(child: tabSection()),
-
-            //  tabSection()
-            // Expanded(
-            //   flex: ,
-            //   child: tabSection(),
-            // ),
           ],
         ),
       );
@@ -164,66 +160,27 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             child: TabBarView(
           controller: tabController,
           children: [
-            PhotoListTile(),
-            VideoListTile(),
+            Consumer<PhotoNotifier>(builder: (ctx, photoProvider, child) {
+              return (photoProvider.photosList.length == 0 &&
+                      photoProvider.isLoaded)
+                  ? NoContentScreen(
+                      message:
+                          'No Photo Loaded at this moment,\n try after some time',
+                    )
+                  : PhotoListTile();
+            }),
+            Consumer<VideoNotifier>(builder: (ctx, videoProvider, child) {
+              return (videoProvider.videosList.length == 0 &&
+                      videoProvider.isLoaded)
+                  ? NoContentScreen(
+                      message:
+                          'No Video Loaded at this moment,\n try after some time',
+                    )
+                  : VideoListTile();
+            }),
           ],
         ))
       ],
     );
   }
-
-  // Widget appBarWidget() {
-  //   final theme = getThemeDataOfContext(context);
-  //   return Container(
-  //     decoration: drawerProvider.isDrawerVisible
-  //         ? BoxDecoration(
-  //             color: theme.backgroundColor,
-  //             borderRadius: BorderRadius.only(topLeft: Radius.circular(20)))
-  //         : BoxDecoration(color: theme.backgroundColor),
-  //     height: 50,
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       crossAxisAlignment: CrossAxisAlignment.center,
-  //       children: [
-  //         IconButton(
-  //             icon: isDrawerVisible
-  //                 ? Icon(
-  //                     Icons.close,
-  //                     size: 40,
-  //                   )
-  //                 : Icon(
-  //                     Icons.menu,
-  //                     size: 35,
-  //                   ),
-  //             onPressed: () {
-  //               if (isDrawerVisible) {
-  //                 setState(() {
-  //                   xOffset = 0.0;
-  //                   yOffset = 0.0;
-  //                   scale = 1.0;
-  //                   isDrawerVisible = false;
-  //                 });
-  //               } else {
-  //                 setState(() {
-  //                   xOffset = MediaQuery.of(context).size.width * 0.70;
-  //                   yOffset = 80.0;
-  //                   scale = .8;
-  //                   isDrawerVisible = true;
-  //                 });
-  //               }
-  //             }),
-  //         SizedBox(
-  //           width: 20,
-  //         ),
-  //         Container(
-  //             alignment: Alignment.centerLeft,
-  //             child: Text(
-  //               'Hello, Welcome Juned',
-  //               style: theme.textTheme.headline1,
-  //             )),
-  //         Spacer(),
-  //       ],
-  //     ),
-  //   );
-  // /}
 }

@@ -3,7 +3,7 @@ import 'package:artapp/Providers/VideoFavouriteProvider.dart';
 import 'package:artapp/pages/home/Home.dart';
 import 'package:artapp/pages/home/PhotoTile.dart';
 import 'package:artapp/pages/home/VideoTile.dart';
-import 'package:artapp/widgets/NoContentScreen.dart';
+import 'package:artapp/widgets/NoDataScreen.dart';
 import 'package:artapp/widgets/getOfContextDatas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -44,18 +44,9 @@ class _MyFavouriteScreenState extends State<MyFavouriteScreen>
     final theme = getThemeDataOfContext(context);
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Row(
           children: [
-            IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
-                }),
-            SizedBox(
-              width: 10,
-            ),
             Text(
               'My Favourites',
               style: theme.textTheme.headline1,
@@ -111,7 +102,7 @@ class _MyFavouriteScreenState extends State<MyFavouriteScreen>
                       isFromLocal: true,
                     )
                   : NoContentScreen(
-                      contentType: 'Photo',
+                      message: 'No Photos found\nadd some to your\nFavourite.',
                     );
             }),
             Consumer<VideoFavouriteNotifier>(
@@ -121,7 +112,7 @@ class _MyFavouriteScreenState extends State<MyFavouriteScreen>
                       isFromLocal: true,
                     )
                   : NoContentScreen(
-                      contentType: 'Video',
+                      message: 'No Videos found\nadd some to your\nFavourite.',
                     );
             }),
           ],

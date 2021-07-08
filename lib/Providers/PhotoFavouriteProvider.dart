@@ -1,9 +1,10 @@
 import 'package:artapp/models/PhotoModel.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class PhotoFavouriteNotifier extends ChangeNotifier {
-  Box<Photo>? _photoBox;
+  static Box<Photo>? _photoBox;
 
   Box<Photo>? get photoBox => _photoBox;
 
@@ -15,6 +16,7 @@ class PhotoFavouriteNotifier extends ChangeNotifier {
     if (!_photoBox!.containsKey(photo.id)) _photoBox?.put(photo.id, photo);
     print(
         '${photo.id} added to the box +++ Total Length>>>>> ${_photoBox?.length}');
+
     notifyListeners();
   }
 

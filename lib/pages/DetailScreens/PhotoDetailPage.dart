@@ -156,9 +156,14 @@ class _PhotoDetailsPageState extends State<PhotoDetailsPage>
                               .containsKey(widget.photo?.id)) {
                             provider.removePhotoToFavourite(
                                 widget.photo ?? Photo());
+                            showSnackBar(
+                                'Photo by ${widget.photo?.photographer} Removed from Favourite Successfully');
                           } else {
-                            provider
-                                .addPhotoToFavourite(widget.photo ?? Photo());
+                            provider.addPhotoToFavourite(
+                              widget.photo ?? Photo(),
+                            );
+                            showSnackBar(
+                                'Photo by ${widget.photo?.photographer} Added to Favourite Successfully');
                           }
                         },
                         child: provider.photoBox!.containsKey(widget.photo?.id)
@@ -175,6 +180,12 @@ class _PhotoDetailsPageState extends State<PhotoDetailsPage>
             )),
       ],
     );
+  }
+
+  void showSnackBar(String message) {
+    final snackBar =
+        SnackBar(duration: Duration(seconds: 1), content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
 

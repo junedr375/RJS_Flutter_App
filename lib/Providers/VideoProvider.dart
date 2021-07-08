@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
 class VideoNotifier extends ChangeNotifier {
-  Box<Video>? _videoBox;
+  static Box<Video>? _videoBox;
   VideoNotifier() {
     _videoBox = Hive.box<Video>('videoBox');
   }
-  List<Video> _videosList = [];
+  static List<Video> _videosList = [];
   bool _isLoaded = false;
   bool _isMoreLoading = false;
   int _pagedIndex = 1;
