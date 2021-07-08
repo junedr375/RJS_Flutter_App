@@ -46,7 +46,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late ConnectivityResult connectivityResult;
+  ConnectivityResult connectivityResult = ConnectivityResult.mobile;
   @override
   void initState() {
     super.initState();
