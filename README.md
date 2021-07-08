@@ -76,7 +76,7 @@ Some of the ScreenShot
 
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/49837673/124861423-2f521700-dfd1-11eb-92f2-553d9d71793d.png" width=470 height=280></td>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861423-2f521700-dfd1-11eb-92f2-553d9d71793d.png" width=540 height=280></td>
     <td><img src="https://user-images.githubusercontent.com/49837673/124861378-15b0cf80-dfd1-11eb-8e9d-882ebad16a05.png" width=270 height=480></td>
    
   </tr>
