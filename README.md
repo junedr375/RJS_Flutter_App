@@ -41,3 +41,15 @@ Tab Bar Implementation  ⇟ ⇟ ⇟
 https://user-images.githubusercontent.com/49837673/124860757-e51c6600-dfcf-11eb-9456-34131e12c4bc.mp4
 
 
+Some of the ScreenShot
+![image](https://user-images.githubusercontent.com/49837673/124861353-0af63a80-dfd1-11eb-9b4c-b06b89c7b643.png)
+![image](https://user-images.githubusercontent.com/49837673/124861365-10538500-dfd1-11eb-8120-aaf29fdd00bb.png)
+![image](https://user-images.githubusercontent.com/49837673/124861394-1ea1a100-dfd1-11eb-905e-120616f76744.png)
+![image](https://user-images.githubusercontent.com/49837673/124861401-23feeb80-dfd1-11eb-8cf0-b0f073f906b4.png)
+![image](https://user-images.githubusercontent.com/49837673/124861409-282b0900-dfd1-11eb-82d8-630d34dacc1c.png)
+![image](https://user-images.githubusercontent.com/49837673/124861414-2bbe9000-dfd1-11eb-891c-c2e3240eec2b.png)
+![image](https://user-images.githubusercontent.com/49837673/124861423-2f521700-dfd1-11eb-92f2-553d9d71793d.png)
+![image](https://user-images.githubusercontent.com/49837673/124861378-15b0cf80-dfd1-11eb-8e9d-882ebad16a05.png)
+
+
+
