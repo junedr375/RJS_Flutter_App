@@ -58,9 +58,9 @@ Some of the ScreenShot
  
  <table>
   <tr>
-    <td>Splash Screen</td>
-     <td>Home Page</td>
-     <td>Transition Drawer</td>
+    <td>Home Page with Dark Theme</td>
+     <td>Photo Detail Page</td>
+     <td>Video Detail Page</td>
   </tr>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/49837673/124861401-23feeb80-dfd1-11eb-8cf0-b0f073f906b4.png" width=270 height=480></td>
@@ -68,12 +68,20 @@ Some of the ScreenShot
     <td><img src="https://user-images.githubusercontent.com/49837673/124861414-2bbe9000-dfd1-11eb-891c-c2e3240eec2b.png" width=270 height=480></td>
   </tr>
  </table>
+ 
+ <table>
+  <tr>
+    <td>Video Player</td>
+     <td>My Favourite Screen Showing date from Local Hive Storage/td>
 
-![image](https://user-images.githubusercontent.com/49837673/124861401-23feeb80-dfd1-11eb-8cf0-b0f073f906b4.png)
-![image](https://user-images.githubusercontent.com/49837673/124861409-282b0900-dfd1-11eb-82d8-630d34dacc1c.png)
-![image](https://user-images.githubusercontent.com/49837673/124861414-2bbe9000-dfd1-11eb-891c-c2e3240eec2b.png)
-![image](https://user-images.githubusercontent.com/49837673/124861423-2f521700-dfd1-11eb-92f2-553d9d71793d.png)
-![image](https://user-images.githubusercontent.com/49837673/124861378-15b0cf80-dfd1-11eb-8e9d-882ebad16a05.png)
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861423-2f521700-dfd1-11eb-92f2-553d9d71793d.png" width=470 height=280></td>
+    <td><img src="https://user-images.githubusercontent.com/49837673/124861378-15b0cf80-dfd1-11eb-8e9d-882ebad16a05.png" width=270 height=480></td>
+   
+  </tr>
+ </table>
+
 
 
 
